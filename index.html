@@ -161,6 +161,42 @@ footer.site{line-height:1.8}
 .follow svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .follow .f{background:#1877F2}.follow .i{background:#D62F58}.follow .w{background:#1B8F4B}
 .follow .f svg{fill:currentColor;stroke:none}
+
+/* testimonial slider */
+.tslider{margin-top:36px}
+.ttrack{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 0}
+.ttrack::-webkit-scrollbar{display:none}
+.tcard{flex:0 0 calc((100% - 40px)/3);scroll-snap-align:start;margin:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column}
+.tcard::before{content:"\201C";font:700 3rem/1 var(--serif);color:var(--gold);height:30px}
+.tq{margin:0;font-family:var(--serif);font-size:1rem;line-height:1.8;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:8;overflow:hidden}
+.tcard.open .tq{-webkit-line-clamp:unset}
+.more{align-self:flex-start;margin-top:10px;background:none;border:0;padding:6px 0;color:var(--emt);font:600 .95rem var(--sans);cursor:pointer}
+.tcard figcaption{margin-top:auto;padding-top:18px;border-top:1px solid var(--line)}
+.tcard figcaption b{display:block;font-weight:700}
+.tcard figcaption span{display:block;color:var(--muted);font-size:.92rem}
+.tcard .tq+.more+figcaption,.tcard .tq+figcaption{margin-top:18px}
+.tctl{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:24px}
+.tbtn{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:grid;place-items:center;transition:background .2s}
+.tbtn:hover:not(:disabled){background:color-mix(in srgb,var(--em) 12%,transparent)}
+.tbtn:disabled{opacity:.4;cursor:default}
+.tdots{display:flex;gap:8px;align-items:center}
+.tdots button{width:10px;height:10px;border-radius:999px;border:0;padding:0;background:var(--line);cursor:pointer;transition:width .25s,background .25s}
+.tdots button.on{width:26px;background:var(--emt)}
+@media (max-width:860px){.tcard{flex-basis:calc((100% - 20px)/2)}}
+@media (max-width:540px){.tcard{flex-basis:100%}}
+@media (prefers-reduced-motion:reduce){.ttrack{scroll-behavior:auto}}
+.tcard figcaption .bt{font-weight:400;font-size:.8rem;color:var(--muted)}
+.cgrid{grid-template-columns:1fr;justify-items:center;text-align:center}
+.cl{max-width:680px;width:100%}
+.cl p.lead{margin-left:auto;margin-right:auto}
+.cl .btns,.follow{justify-content:center}
+.info li{justify-content:center}
+.info,.follow{max-width:520px;width:100%;margin-left:auto;margin-right:auto;text-align:left}
+.info li,.follow{justify-content:flex-start}
+.follow .m{width:44px;height:44px;border-radius:50%;border:0;padding:0;display:grid;place-items:center;background:#0B8CE9;color:#fff;font:700 .95rem var(--sans);letter-spacing:-.02em;cursor:pointer;transition:transform .15s}
+.follow .m:hover{transform:translateY(-2px)}
+.follow .imomsg{flex-basis:100%;margin:0;color:#E3C77F;font-size:.92rem}
+.follow .imomsg:empty{display:none}
 </style>
 </head>
 <body>
@@ -170,7 +206,7 @@ footer.site{line-height:1.8}
   <button class="menu-btn" id="mb" aria-label="Open menu" aria-expanded="false" aria-controls="nl"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   <nav aria-label="Main"><ul id="nl">
    <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#courses">Courses</a></li>
-   <li><a href="#reviews">Reviews</a></li><li><a href="#contact">Contact</a></li>
+   <li><a href="#reviews">Feedbacks</a></li><li><a href="#contact">Contact</a></li>
   </ul></nav>
  </div>
 </header>
@@ -228,10 +264,14 @@ footer.site{line-height:1.8}
 <section id="reviews">
  <div class="wrap">
   <h2 class="sec-title">শিক্ষার্থীদের মতামত</h2><hr class="rule">
-  <div class="grid">
-   <figure class="quote" style="margin:0"><p><span class="ph" data-edit>[শিক্ষার্থীর মতামত এখানে বসবে]</span></p><footer>— <span class="ph" data-edit>[শিক্ষার্থীর নাম]</span></footer></figure>
-   <figure class="quote" style="margin:0"><p><span class="ph" data-edit>[শিক্ষার্থীর মতামত এখানে বসবে]</span></p><footer>— <span class="ph" data-edit>[শিক্ষার্থীর নাম]</span></footer></figure>
-   <figure class="quote" style="margin:0"><p><span class="ph" data-edit>[শিক্ষার্থীর মতামত এখানে বসবে]</span></p><footer>— <span class="ph" data-edit>[শিক্ষার্থীর নাম]</span></footer></figure>
+  <div class="tslider" role="region" aria-roledescription="carousel" aria-label="শিক্ষার্থীদের মতামত">
+   <div class="ttrack" id="ttrack" tabindex="0">
+   <figure class="tcard"><blockquote class="tq">আসসালামু আলাইকুম স্যার। আপনি আমাদের সবাইকে ভালো করে বুঝিয়ে পড়ান। আপনি গণিত ও ইংরেজি দুইটাই আমাদের ভালো করে বুঝিয়ে পড়ান। আমরা প্রশ্ন করি, আপনি আমাদের প্রশ্নের উত্তর ভালো ভাবে বুঝিয়ে দেন। স্যার বললে অনেক কথাই বলা যায়, আপনার সম্পর্কে যাই বলি তাই কম। এক কথায় আপনি একজন Perfect Teacher। লিখতে লিখতে আমার একটা কথা মনে পড়ে গেল, জরিমানার বিষয়টা আমাদের জন্য এবং পরবর্তী সকলের জন্য অনেক ভালো হবে। স্যার, আপনার পড়ানোর ধরন একটু অন্যরকম, এ কারণে আমাদের পড়তে একটু বেশি সুবিধা হচ্ছে।</blockquote><button type="button" class="more" hidden aria-expanded="false">আরও পড়ুন</button><figcaption><b>মোসাঃ জুলি <small class="bt">(এসএসসি ২০২৫)</small></b><span>মোহনপুর দাখিল মাদ্রাসা</span></figcaption></figure>
+   <figure class="tcard"><blockquote class="tq">আসসালামু আলাইকুম স্যার। কেমন আছেন? আশা করি ভালো আছেন। আপনার কিছু ভালো দিক লিখা হলো: আপনি আমাদেরকে অনেক ভালো পড়া লেখা বুঝান। আর আগে আমার হাতের লেখা অনেক বাজে ছিল কিন্তু আপনার এখানে পড়ার পর এখন আমার হাতের লেখা কিছুটা ভালো হয়েছে। আর আপনি মাঝে মাঝে কিছু কথা বলেন সেইগুলো অনেক ইমপর্টেন্ট। আর আপনার কথাতে আমার অনেক পরিবর্তন হয়েছে।</blockquote><button type="button" class="more" hidden aria-expanded="false">আরও পড়ুন</button><figcaption><b>হালিমা <small class="bt">(এসএসসি ২০২৫)</small></b><span>মোহনপুর দাখিল মাদ্রাসা</span></figcaption></figure>
+   <figure class="tcard"><blockquote class="tq">আসসালামু আলাইকুম। স্যার আমি আপনার ভালো দিকগুলোই আগে বলব, কারণ খারাপ দিক ভাবতে ভাবতে সারারাত কেটে যাবে হয়তো, কেননা আপনার কোনো খারাপ দিক আমার চোখে পড়ে নি। আপনি খুবই সুন্দর এবং সহজভাবে পড়া বুঝিয়ে দেওয়ার চেষ্টা করেন। আপনি আপনার Best টা দিয়ে আমাদের পড়ান। অন্যান্য শিক্ষকদের তুলনায় আপনি অনেক আন্তরিকতার সাথে আমাদের পড়ান আমার তাই মনে হয়। আপনি আমাদের শুধু বইয়ের পড়াই নয় বরং আমাদের বাস্তব জীবনের জন্য প্রয়োজনীয় বিষয় নিয়ে আলোচনা করেন। আপনি যেভাবে আমাদের এতো আগ্রহের সাথে পড়ান এভাবে অন্তত আমাকে কেউ পড়ায় নি। মানে কোনো শিক্ষক এতোটা আগ্রহের সাথে পড়ায় নি। আপনি খুবই সহজ ভাষায় খুবই সুন্দর করে বুঝান। আমি খুব সহজেই তা বুঝতে পারি। আপনি ক্লাসের ফাঁকে সেই সব কথা বলেন তা আমাদের জীবনের জন্য অনেক ভালো উপদেশ বলে আমি মনে করি। আপনি আমাদের আত্মবিশ্বাস জোগাতে সাহায্য করেন।</blockquote><button type="button" class="more" hidden aria-expanded="false">আরও পড়ুন</button><figcaption><b>সালমা আক্তার <small class="bt">(এসএসসি ২০২৫)</small></b><span>মোহনপুর দাখিল মাদ্রাসা</span></figcaption></figure>
+   <figure class="tcard"><blockquote class="tq">আপনার মতো শিক্ষক পাওয়া সত্যিই সৌভাগ্যের ব্যাপার স্যার! আপনি শুধু গণিত শেখান না, বরং আমাদের আত্মবিশ্বাসও বাড়ান। আপনার ক্লাসে পড়তে এসে গণিত নিয়ে ভয় অনেকটাই কেটে গেছে। আল্লাহ আপনাকে সুস্থ ও সফল রাখুক স্যার। আপনার ধৈর্য ও আন্তরিকতা আমাদের গণিত শেখা অনেক সহজ করে দিয়েছে। আপনি শুধু পড়ান না, বরং আমাদের ভেতরের ভয় দূর করেন। ‘তুমি পারবে!’ এই কথাগুলো শুনলেই নতুন করে চেষ্টা করার ইচ্ছা জাগে। আপনার কাছে শেখা মানেই শুধু অংক করা নয়, বরং নিজের উপর বিশ্বাস রাখা। ধন্যবাদ স্যার, এমন একজন ভালো শিক্ষক হওয়ার জন্য। আপনার মতো শিক্ষক খুব কম পাওয়া যায় স্যার! আপনি সব সময় চেষ্টা করতে বলেন। আর যখন উৎসাহ দেন, তখন সত্যিই মনে হয় আমরা পারব! আপনি যেভাবে আমাদের ভুলগুলো শুধরে দেন তা আমাদের শেখার আগ্রহ আরও বাড়িয়ে দেয়। স্যার আপনি শুধু একজন শিক্ষকই নন, একজন চমৎকার মোটিভেটরও। যখনই আমরা একটু হারি, আপনি বলেন এই তো হয়েছে। আবার আমাদের উৎসাহ দেন, আবার ভুল করলে ধৈর্য ধরে বুঝিয়ে দেন। আপনার শেখানো পদ্ধতি হলো অনেক কার্যকর, আল্লাহ আপনাকে উত্তম প্রতিদান দিন।</blockquote><button type="button" class="more" hidden aria-expanded="false">আরও পড়ুন</button><figcaption><b>সাবিহা আক্তার <small class="bt">(এসএসসি ২০২৫)</small></b><span>মোহনপুর দাখিল মাদ্রাসা</span></figcaption></figure>
+   </div>
+   <div class="tctl"><button type="button" class="tbtn" id="tprev" aria-label="আগের মতামত"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div class="tdots" id="tdots"></div><button type="button" class="tbtn" id="tnext" aria-label="পরের মতামত"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>
   </div>
  </div>
 </section>
@@ -250,25 +290,13 @@ footer.site{line-height:1.8}
    <div class="follow"><span>Follow us on</span>
     <a class="f" id="s-fb" href="#contact" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a>
     <a class="i" id="s-ig" href="#contact" target="_blank" rel="noopener" aria-label="Instagram" hidden><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6"/></svg></a>
-    <a class="w" id="s-wa" href="#contact" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M3 21l1.65-4.8A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.800c0 3.200 2.600 5.800 5.800 5.800l1-1.600-2-1-.8.800a4 4 0 0 1-1.500-1.500l.8-.8-1-2z"/></svg></a>
+    <a class="w" id="s-wa" href="#contact" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M3 21l1.65-4.8A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.800c0 3.200 2.600 5.800 5.800 5.800l1-1.600-2-1-.8.800a4 4 0 0 1-1.500-1.500l.8-.8-1-2z"/></svg></a><button type="button" class="m" id="s-imo" aria-label="imo — নম্বর কপি করুন">imo</button><span class="imomsg" id="imo-msg" role="status"></span>
    </div>
-  </div>
-  <div class="mcard">
-   <h3>বার্তা পাঠান</h3>
-   <form id="mf" autocomplete="on">
-    <div class="f2">
-     <div><label for="f-n">আপনার নাম</label><input id="f-n" type="text" required placeholder="পুরো নাম"></div>
-     <div><label for="f-c">ফোন নম্বর বা ইমেইল</label><input id="f-c" type="text" required placeholder="যোগাযোগের মাধ্যম"></div>
-    </div>
-    <label for="f-m">আপনার বার্তা</label>
-    <textarea id="f-m" required placeholder="এখানে লিখুন..."></textarea>
-    <button class="btn pri" type="submit">বার্তা পাঠান</button>
-   </form>
   </div>
  </div>
 </section>
 </main>
-<footer class="site">© <span id="yr">2026</span> Falah Coaching Center. All Rights Reserved.<br>Designed &amp; Developed with care by Fojle Rabbi.</footer>
+<footer class="site">© <span id="yr">2026</span> Falah Coaching Center. All Rights Reserved.<br>Designed &amp; Developed with <span role="img" aria-label="love">❤️</span> by Fojle Rabbi.</footer>
 
 <script>
 /* Edit these three values to publish your real contact details. */
@@ -284,8 +312,52 @@ const CONFIG={phone:"01926235795",address:"উজিরাকান্দি ভ
  $("s-fb").href=CONFIG.facebook;
  $("s-wa").href="https://wa.me/880"+CONFIG.phone.replace(/\D/g,"").replace(/^0/,"");
  if(CONFIG.instagram){$("s-ig").href=CONFIG.instagram;$("s-ig").hidden=false}
- $("mf").addEventListener("submit",function(e){e.preventDefault();var n=$("f-n").value.trim(),c=$("f-c").value.trim(),m=$("f-m").value.trim();var b="নাম: "+n+"\nযোগাযোগ: "+c+"\n\n"+m;var a=document.createElement("a");a.href="mailto:falahcoachingcenter@gmail.com?subject="+encodeURIComponent("ওয়েবসাইট থেকে বার্তা: "+n)+"&body="+encodeURIComponent(b);document.body.appendChild(a);a.click();a.remove()});
  $("yr").textContent=new Date().getFullYear();
+})();
+
+(function(){
+ var tr=document.getElementById("ttrack"),pv=document.getElementById("tprev"),nx=document.getElementById("tnext"),dt=document.getElementById("tdots");
+ if(!tr)return;
+ var cards=[].slice.call(tr.children),cur=0,pages=1;
+ function step(){return cards[0].offsetWidth+20}
+ function go(i){tr.scrollTo({left:i*step(),behavior:"smooth"})}
+ function upd(){
+  cur=Math.min(pages-1,Math.round(tr.scrollLeft/step()));
+  [].forEach.call(dt.children,function(d,i){d.classList.toggle("on",i===cur)});
+  pv.disabled=tr.scrollLeft<4;
+  nx.disabled=tr.scrollLeft>=tr.scrollWidth-tr.clientWidth-4;
+ }
+ function chk(){cards.forEach(function(c){var t=c.querySelector(".tq"),m=c.querySelector(".more");m.hidden=!(c.classList.contains("open")||t.scrollHeight>t.clientHeight+2)})}
+ function build(){
+  var vis=Math.max(1,Math.round((tr.clientWidth+20)/step()));
+  pages=Math.max(1,cards.length-vis+1);
+  dt.innerHTML="";
+  for(var i=0;i<pages;i++){(function(i){var b=document.createElement("button");b.type="button";b.setAttribute("aria-label","মতামত "+(i+1));b.onclick=function(){go(i)};dt.appendChild(b)})(i)}
+  upd();chk();
+ }
+ pv.onclick=function(){go(Math.max(0,cur-1))};
+ nx.onclick=function(){go(Math.min(pages-1,cur+1))};
+ tr.addEventListener("scroll",function(){requestAnimationFrame(upd)});
+ tr.addEventListener("keydown",function(e){if(e.key==="ArrowRight"){nx.click()}else if(e.key==="ArrowLeft"){pv.click()}});
+ cards.forEach(function(c){var m=c.querySelector(".more");m.onclick=function(){var o=c.classList.toggle("open");m.textContent=o?"কম দেখুন":"আরও পড়ুন";m.setAttribute("aria-expanded",o)}});
+ window.addEventListener("resize",build);window.addEventListener("load",build);
+ build();
+})();
+
+(function(){
+ var b=document.getElementById("s-imo"),m=document.getElementById("imo-msg");
+ if(!b)return;
+ var PKG="com.imo.android.imoim";
+ b.addEventListener("click",function(){
+  var n=CONFIG.phone,ua=navigator.userAgent;
+  function note(c){m.textContent=(c?"imo নম্বর কপি হয়েছে ("+n+")। ":"imo নম্বর: "+n+"। ")+"imo না খুললে অ্যাপে এই নম্বর সার্চ করে মেসেজ দিন।"}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(n).then(function(){note(true)},function(){note(false)})}else{note(false)}
+  if(/Android/i.test(ua)){
+   location.href="intent://#Intent;scheme=imo;package="+PKG+";S.browser_fallback_url="+encodeURIComponent("https://play.google.com/store/apps/details?id="+PKG)+";end";
+  }else if(/iPhone|iPad|iPod/i.test(ua)){
+   var f=document.createElement("iframe");f.style.display="none";f.src="imo://";document.body.appendChild(f);setTimeout(function(){f.remove()},1500);
+  }
+ });
 })();
 </script>
 </body>
