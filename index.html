@@ -197,6 +197,58 @@ footer.site{line-height:1.8}
 .follow .m:hover{transform:translateY(-2px)}
 .follow .imomsg{flex-basis:100%;margin:0;color:#E3C77F;font-size:.92rem}
 .follow .imomsg:empty{display:none}
+
+/* ===== animations ===== */
+.hero-in.rise{animation:none}
+.hero-in>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) backwards}
+.hero-in>*:nth-child(1){animation-delay:.05s}.hero-in>*:nth-child(2){animation-delay:.22s}
+.hero-in>*:nth-child(3){animation-delay:.38s}.hero-in>*:nth-child(4){animation-delay:.54s}
+@keyframes drift1{from{transform:translateX(-50%) translateY(0)}to{transform:translateX(-50%) translateY(-16px)}}
+@keyframes drift2{from{transform:translateX(-50%) translateY(0)}to{transform:translateX(-50%) translateY(12px)}}
+.hero::before{animation:drift1 9s ease-in-out infinite alternate}
+.hero::after{animation:drift2 11s ease-in-out infinite alternate}
+@keyframes breathe{from{transform:scale(1)}to{transform:scale(1.06)}}
+.contact::before{animation:breathe 9s ease-in-out infinite alternate}
+.contact::after{animation:breathe 12s ease-in-out infinite alternate-reverse}
+header.nav{transition:box-shadow .3s}
+header.nav.scrolled{box-shadow:0 8px 24px -14px rgba(0,0,0,.4)}
+.nav ul a.active{color:var(--ink);background:color-mix(in srgb,var(--em) 14%,transparent)}
+@keyframes sway{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+.brand .lg-g{transform-origin:41px 15px;animation:sway 3.6s ease-in-out infinite}
+.btn:active{transform:scale(.97)}
+@keyframes ring{0%,100%{box-shadow:0 0 0 0 rgba(227,199,127,.4)}50%{box-shadow:0 0 0 14px rgba(227,199,127,0)}}
+.idcard img{animation:ring 3.6s ease-in-out infinite}
+@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-12px) rotate(-3deg)}}
+.idcard::before{animation:bob 9s ease-in-out infinite alternate}
+.idcard::after{animation:bob 11s ease-in-out infinite alternate-reverse}
+.row svg{transition:transform .3s}
+.row:hover svg{transform:scale(1.12) rotate(-5deg)}
+.panel{transition:transform .3s,box-shadow .3s}
+.panel:hover{transform:translateY(-3px);box-shadow:0 18px 36px -22px rgba(0,0,0,.4)}
+.tcard{transition:transform .3s,box-shadow .3s}
+.tcard:hover{transform:translateY(-4px);box-shadow:0 16px 32px -20px rgba(0,0,0,.4)}
+.info li .ic{transition:transform .3s,background .3s}
+.info li:hover .ic{transform:scale(1.1);background:rgba(227,199,127,.14)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(10,127,94,.55)}70%,100%{box-shadow:0 0 0 14px rgba(10,127,94,0)}}
+#b-call{animation:pulse 2.8s ease-out infinite}
+@keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+@keyframes rowin{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease var(--d,0s),transform .7s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+.js .rule.rv{opacity:1;transform:scaleX(0);transform-origin:left center}
+.js .rule.rv.in{transform:scaleX(1)}
+.js .cols:not(.in) .row{opacity:0}
+.js .cols.in .row{animation:rowin .6s cubic-bezier(.2,.7,.2,1) backwards}
+.js .cols.in .row:nth-child(2){animation-delay:.1s}.js .cols.in .row:nth-child(3){animation-delay:.18s}
+.js .cols.in .row:nth-child(4){animation-delay:.26s}.js .cols.in .row:nth-child(5){animation-delay:.34s}
+.js .cols.in .row:nth-child(6){animation-delay:.42s}
+.follow.in a{animation:pop .5s cubic-bezier(.3,1.6,.5,1) backwards}
+.follow.in a:nth-of-type(1){animation-delay:.1s}.follow.in a:nth-of-type(2){animation-delay:.2s}
+.follow.in a:nth-of-type(3){animation-delay:.3s}.follow.in .m{animation:pop .5s cubic-bezier(.3,1.6,.5,1) .4s backwards}
+@media (prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation:none!important;transition:none!important}
+ .js .rv,.js .cols .row{opacity:1!important;transform:none!important}
+}
 </style>
 </head>
 <body>
@@ -281,7 +333,7 @@ footer.site{line-height:1.8}
             <br><br>
             Note: স্যার আপনি আমাকে জিজ্ঞেস করেছিলেন কলেজের ম্যাম রা কিভাবে পড়ান, জানি না কি ভেবে এই প্রশ্ন টা করেছিলেন কিন্তু স্যার আমার অভিজ্ঞতা থেকে বলছি ম্যাম যেই রকম ভাবে করে পড়ান ঠিক তেমনি আপনি ও খুব ভালো করে পড়ান।
         </blockquote><button type="button" class="more" hidden aria-expanded="false">আরও পড়ুন</button>
-                <figcaption><b>জান্নাত আক্তার<small class="bt">(এইচএসসি ২০২৬)</small></b><span>গাজীপুর খান সরকারি মডেল স্কুল এন্ড কলেজ</span></figcaption>
+                <figcaption><b>জান্নাত <small class="bt">(এইচএসসি ২০২৬)</small></b></figcaption>
     </figure>
 
     <figure class="tcard">
@@ -299,7 +351,7 @@ footer.site{line-height:1.8}
             <br><br>
             => আরেকটা কথা স্যার আমার জীবনে/আমার দেখা মতে ICT and English বিষয়ের জন্য এক জন Teacher হিসেবে আপনিই "Best"
         </blockquote><button type="button" class="more" hidden aria-expanded="false">আরও পড়ুন</button>
-        <figcaption><b>সাদিয়া আক্তার মিম <small class="bt">(এইচএসসি ২০২৬)</small></b><span>ইঞ্জিনিয়ার হারুন উর রশিদ গার্লস কলেজ </span></figcaption>
+        <figcaption><b>সাদিয়া <small class="bt">(এইচএসসি ২০২৬)</small></b></figcaption>
     </figure>
     
     <figure class="tcard">
@@ -314,7 +366,7 @@ footer.site{line-height:1.8}
             ৯। আগে সবার কাছে শুনতাম Inter এর ICT অনেক কঠিন কিন্তু আপনার কাছে পড়ার পর অনেক সহজ মনে হয়েছে। <br>
             ১০। কোনো ছাত্র ছাত্রী আপনার ভুল ধরলে আপনি তাতে খুশি হন এবং সেটা ঠিক করেন।
         </blockquote><button type="button" class="more" hidden aria-expanded="false">আরও পড়ুন</button>
-        <figcaption><b>লামিয়া আক্তার <small class="bt">(এইচএসসি ২০২৬)</small></b><span>জুরানপুর আদর্শ ডিগ্রি কলেজ</span></figcaption>
+        <figcaption><b>লামিয়া <small class="bt">(এইচএসসি ২০২৬)</small></b></figcaption>
     </figure>
 
     <figure class="tcard">
@@ -322,15 +374,15 @@ footer.site{line-height:1.8}
         আসলামু আলাইকুম স্যার,<br>  
         আশা করছি ভালো আছেন। আমি ফালাহ কোচিং সেন্টারের একজন ছাত্রী। স্যার আপনি বলেছিলেন আপনাকে ফিডব্যাক দেওয়ার জন্য। বলতে গেলে আমি আপনার কোচিং সেন্টারে নতুন তবে বলতে। পড়াশোনা নিয়ে কিছু কথা যখন আমি প্রথম আপনার কোচিং সেন্টারে, যাই সেই দিনটা এমন ছিল যে প্রথমে ভয় লেগেছি কিভাবে পড়বো বা আপনার পড়ানোর ধরণটা কেমন হবে আমার জন্য তবে ঐদিন টা আমার জন্য নতুন ছিল। তবে আপনার পড়ানোর ধরণটা ছিল অন্য রকম বলা বাহুল্য আমার ইংরেজিতেক টপিক সমস্যা ছিল। আমার জন্য এই টপিক গুলো কঠিন ছিল! তবে স্যার আপনার পড়ানোর ধরণটা ছিল খুবই আন্তরিক এবং কঠিন কঠিন টপিকগুলো আপনি সহজভাবে বোঝানের চেষ্টা কনে। এর আগে আমি এত মনোযোগ দিয়ে পড়িনি। আপনার এখানেই মনযোগী হয়। স্যার আপনি যখন ইংরেজিতে কোনো টপিক বোঝান উদাহরন দিয়ে বুঝি দেন তখন সেই বিষয়টি আমার জন্য খুবই সহজ হয়। স্যার আপনার ICT বিষয়টিও খুব সহজ ও আন্তরিকভাবে আপনি আমাদের বোঝান। আপনার অনলাইনের দুটো ক্লাস খুবি আমার জন্য উপকার ছিল। আপনি অনলাইন ও অফলাইন দুটোই খুব সুন্দর ভাবে বোঝান। যা সত্যি আমার বুঝতে সহজ হয়।
     </blockquote><button type="button" class="more" hidden aria-expanded="false">আরও পড়ুন</button>
-    <figcaption><b>রোকসানা ইসলাম<small class="bt">(এইচএসসি ২০২৬)</small></b><span>গাজীপুর খান সরকারি মডেল স্কুল এন্ড কলেজ</span></figcaption>
+    <figcaption><b>রোকসানা <small class="bt">(এইচএসসি ২০২৬)</small></b></figcaption>
     </figure>
     
-   <figure class="tcard"><blockquote class="tq">আসসালামু আলাইকুম স্যার। আপনি আমাদের সবাইকে ভালো করে বুঝিয়ে পড়ান। আপনি গণিত ও ইংরেজি দুইটাই আমাদের ভালো করে বুঝিয়ে পড়ান। আমরা প্রশ্ন করি, আপনি আমাদের প্রশ্নের উত্তর ভালো ভাবে বুঝিয়ে দেন। স্যার বললে অনেক কথাই বলা যায়, আপনার সম্পর্কে যাই বলি তাই কম। এক কথায় আপনি একজন Perfect Teacher। লিখতে লিখতে আমার একটা কথা মনে পড়ে গেল, জরিমানার বিষয়টা আমাদের জন্য এবং পরবর্তী সকলের জন্য অনেক ভালো হবে। স্যার, আপনার পড়ানোর ধরন একটু অন্যরকম, এ কারণে আমাদের পড়তে একটু বেশি সুবিধা হচ্ছে।</blockquote><button type="button" class="more" hidden aria-expanded="false">আরও পড়ুন</button><figcaption><b>মোসাঃ জুলি <small class="bt">(এসএসসি ২০২৫)</small></b><span>মোহনপুর দাখিল মাদ্রাসা</span></figcaption></figure>
-   <figure class="tcard"><blockquote class="tq">আসসালামু আলাইকুম স্যার। কেমন আছেন? আশা করি ভালো আছেন। আপনার কিছু ভালো দিক লিখা হলো: আপনি আমাদেরকে অনেক ভালো পড়া লেখা বুঝান। আর আগে আমার হাতের লেখা অনেক বাজে ছিল কিন্তু আপনার এখানে পড়ার পর এখন আমার হাতের লেখা কিছুটা ভালো হয়েছে। আর আপনি মাঝে মাঝে কিছু কথা বলেন সেইগুলো অনেক ইমপর্টেন্ট। আর আপনার কথাতে আমার অনেক পরিবর্তন হয়েছে।</blockquote><button type="button" class="more" hidden aria-expanded="false">আরও পড়ুন</button><figcaption><b>হালিমা <small class="bt">(এসএসসি ২০২৫)</small></b><span>মোহনপুর দাখিল মাদ্রাসা</span></figcaption></figure>
-   <figure class="tcard"><blockquote class="tq">আসসালামু আলাইকুম। স্যার আমি আপনার ভালো দিকগুলোই আগে বলব, কারণ খারাপ দিক ভাবতে ভাবতে সারারাত কেটে যাবে হয়তো, কেননা আপনার কোনো খারাপ দিক আমার চোখে পড়ে নি। আপনি খুবই সুন্দর এবং সহজভাবে পড়া বুঝিয়ে দেওয়ার চেষ্টা করেন। আপনি আপনার Best টা দিয়ে আমাদের পড়ান। অন্যান্য শিক্ষকদের তুলনায় আপনি অনেক আন্তরিকতার সাথে আমাদের পড়ান আমার তাই মনে হয়। আপনি আমাদের শুধু বইয়ের পড়াই নয় বরং আমাদের বাস্তব জীবনের জন্য প্রয়োজনীয় বিষয় নিয়ে আলোচনা করেন। আপনি যেভাবে আমাদের এতো আগ্রহের সাথে পড়ান এভাবে অন্তত আমাকে কেউ পড়ায় নি। মানে কোনো শিক্ষক এতোটা আগ্রহের সাথে পড়ায় নি। আপনি খুবই সহজ ভাষায় খুবই সুন্দর করে বুঝান। আমি খুব সহজেই তা বুঝতে পারি। আপনি ক্লাসের ফাঁকে সেই সব কথা বলেন তা আমাদের জীবনের জন্য অনেক ভালো উপদেশ বলে আমি মনে করি। আপনি আমাদের আত্মবিশ্বাস জোগাতে সাহায্য করেন।</blockquote><button type="button" class="more" hidden aria-expanded="false">আরও পড়ুন</button><figcaption><b>সালমা আক্তার <small class="bt">(এসএসসি ২০২৫)</small></b><span>মোহনপুর দাখিল মাদ্রাসা</span></figcaption></figure>
+   <figure class="tcard"><blockquote class="tq">আসসালামু আলাইকুম স্যার। আপনি আমাদের সবাইকে ভালো করে বুঝিয়ে পড়ান। আপনি গণিত ও ইংরেজি দুইটাই আমাদের ভালো করে বুঝিয়ে পড়ান। আমরা প্রশ্ন করি, আপনি আমাদের প্রশ্নের উত্তর ভালো ভাবে বুঝিয়ে দেন। স্যার বললে অনেক কথাই বলা যায়, আপনার সম্পর্কে যাই বলি তাই কম। এক কথায় আপনি একজন Perfect Teacher। লিখতে লিখতে আমার একটা কথা মনে পড়ে গেল, জরিমানার বিষয়টা আমাদের জন্য এবং পরবর্তী সকলের জন্য অনেক ভালো হবে। স্যার, আপনার পড়ানোর ধরন একটু অন্যরকম, এ কারণে আমাদের পড়তে একটু বেশি সুবিধা হচ্ছে।</blockquote><button type="button" class="more" hidden aria-expanded="false">আরও পড়ুন</button><figcaption><b>জুলি <small class="bt">(এসএসসি ২০২৫)</small></b></figcaption></figure>
+   <figure class="tcard"><blockquote class="tq">আসসালামু আলাইকুম স্যার। কেমন আছেন? আশা করি ভালো আছেন। আপনার কিছু ভালো দিক লিখা হলো: আপনি আমাদেরকে অনেক ভালো পড়া লেখা বুঝান। আর আগে আমার হাতের লেখা অনেক বাজে ছিল কিন্তু আপনার এখানে পড়ার পর এখন আমার হাতের লেখা কিছুটা ভালো হয়েছে। আর আপনি মাঝে মাঝে কিছু কথা বলেন সেইগুলো অনেক ইমপর্টেন্ট। আর আপনার কথাতে আমার অনেক পরিবর্তন হয়েছে।</blockquote><button type="button" class="more" hidden aria-expanded="false">আরও পড়ুন</button><figcaption><b>হালিমা <small class="bt">(এসএসসি ২০২৫)</small></b></figcaption></figure>
+   <figure class="tcard"><blockquote class="tq">আসসালামু আলাইকুম। স্যার আমি আপনার ভালো দিকগুলোই আগে বলব, কারণ খারাপ দিক ভাবতে ভাবতে সারারাত কেটে যাবে হয়তো, কেননা আপনার কোনো খারাপ দিক আমার চোখে পড়ে নি। আপনি খুবই সুন্দর এবং সহজভাবে পড়া বুঝিয়ে দেওয়ার চেষ্টা করেন। আপনি আপনার Best টা দিয়ে আমাদের পড়ান। অন্যান্য শিক্ষকদের তুলনায় আপনি অনেক আন্তরিকতার সাথে আমাদের পড়ান আমার তাই মনে হয়। আপনি আমাদের শুধু বইয়ের পড়াই নয় বরং আমাদের বাস্তব জীবনের জন্য প্রয়োজনীয় বিষয় নিয়ে আলোচনা করেন। আপনি যেভাবে আমাদের এতো আগ্রহের সাথে পড়ান এভাবে অন্তত আমাকে কেউ পড়ায় নি। মানে কোনো শিক্ষক এতোটা আগ্রহের সাথে পড়ায় নি। আপনি খুবই সহজ ভাষায় খুবই সুন্দর করে বুঝান। আমি খুব সহজেই তা বুঝতে পারি। আপনি ক্লাসের ফাঁকে সেই সব কথা বলেন তা আমাদের জীবনের জন্য অনেক ভালো উপদেশ বলে আমি মনে করি। আপনি আমাদের আত্মবিশ্বাস জোগাতে সাহায্য করেন।</blockquote><button type="button" class="more" hidden aria-expanded="false">আরও পড়ুন</button><figcaption><b>সালমা <small class="bt">(এসএসসি ২০২৫)</small></b></figcaption></figure>
    <figure class="tcard"><blockquote class="tq">আপনার মতো শিক্ষক পাওয়া সত্যিই সৌভাগ্যের ব্যাপার স্যার! আপনি শুধু গণিত শেখান না, বরং আমাদের আত্মবিশ্বাসও বাড়ান। আপনার ক্লাসে পড়তে এসে গণিত নিয়ে ভয় অনেকটাই কেটে গেছে। আল্লাহ আপনাকে সুস্থ ও সফল রাখুক স্যার। আপনার ধৈর্য ও আন্তরিকতা আমাদের গণিত শেখা অনেক সহজ করে দিয়েছে। আপনি শুধু পড়ান না, বরং আমাদের ভেতরের ভয় দূর করেন। ‘তুমি পারবে!’ এই কথাগুলো শুনলেই নতুন করে চেষ্টা করার ইচ্ছা জাগে। আপনার কাছে শেখা মানেই শুধু অংক করা নয়, বরং নিজের উপর বিশ্বাস রাখা। ধন্যবাদ স্যার, এমন একজন ভালো শিক্ষক হওয়ার জন্য। আপনার মতো শিক্ষক খুব কম পাওয়া যায় স্যার! আপনি সব সময় চেষ্টা করতে বলেন। আর যখন উৎসাহ দেন, তখন সত্যিই মনে হয় আমরা পারব! আপনি যেভাবে আমাদের ভুলগুলো শুধরে দেন তা আমাদের শেখার আগ্রহ আরও বাড়িয়ে দেয়। 
     <br><br>
-    স্যার আপনি শুধু একজন শিক্ষকই নন, একজন চমৎকার মোটিভেটরও। যখনই আমরা একটু হারি, আপনি বলেন এই তো হয়েছে। আবার আমাদের উৎসাহ দেন, আবার ভুল করলে ধৈর্য ধরে বুঝিয়ে দেন। আপনার শেখানো পদ্ধতি হলো অনেক কার্যকর, আল্লাহ আপনাকে উত্তম প্রতিদান দিন।</blockquote><button type="button" class="more" hidden aria-expanded="false">আরও পড়ুন</button><figcaption><b>সাবিহা আক্তার <small class="bt">(এসএসসি ২০২৫)</small></b><span>মোহনপুর দাখিল মাদ্রাসা</span></figcaption></figure>
+    স্যার আপনি শুধু একজন শিক্ষকই নন, একজন চমৎকার মোটিভেটরও। যখনই আমরা একটু হারি, আপনি বলেন এই তো হয়েছে। আবার আমাদের উৎসাহ দেন, আবার ভুল করলে ধৈর্য ধরে বুঝিয়ে দেন। আপনার শেখানো পদ্ধতি হলো অনেক কার্যকর, আল্লাহ আপনাকে উত্তম প্রতিদান দিন।</blockquote><button type="button" class="more" hidden aria-expanded="false">আরও পড়ুন</button><figcaption><b>সাবিহা <small class="bt">(এসএসসি ২০২৫)</small></b></figcaption></figure>
    </div>
    <div class="tctl"><button type="button" class="tbtn" id="tprev" aria-label="আগের মতামত"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div class="tdots" id="tdots"></div><button type="button" class="tbtn" id="tnext" aria-label="পরের মতামত"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>
   </div>
@@ -419,6 +471,32 @@ const CONFIG={phone:"01926235795",address:"উজিরাকান্দি ভ
    var f=document.createElement("iframe");f.style.display="none";f.src="imo://";document.body.appendChild(f);setTimeout(function(){f.remove()},1500);
   }
  });
+})();
+</script>
+<script>
+(function(){
+ var d=document,r=d.documentElement;
+ var nav=d.querySelector("header.nav");
+ function sc(){if(nav)nav.classList.toggle("scrolled",window.scrollY>8)}
+ window.addEventListener("scroll",sc,{passive:true});sc();
+ if(!("IntersectionObserver" in window))return;
+ var links={};
+ [].forEach.call(d.querySelectorAll("#nl a"),function(a){links[a.getAttribute("href")]=a});
+ var spy=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;
+  Object.keys(links).forEach(function(k){links[k].classList.remove("active")});
+  var a=links["#"+e.target.id];if(a)a.classList.add("active")})},{rootMargin:"-45% 0px -50% 0px"});
+ ["home","about","courses","reviews","contact"].forEach(function(id){var el=d.getElementById(id);if(el)spy.observe(el)});
+ if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+ try{
+  var sel=".sec-title,.rule,.sec-sub,.cols,.idcard,.abt>*,.tslider,.cl>h2,.cl>.lead,.cl>.btns,.info li,.follow";
+  var seen=[],els=[].filter.call(d.querySelectorAll(sel),function(e){if(seen.indexOf(e)>-1||e.closest(".hero"))return false;seen.push(e);return true});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+  var count=new Map();
+  els.forEach(function(e){var p=e.parentNode,i=count.get(p)||0;count.set(p,i+1);
+   e.style.setProperty("--d",(Math.min(i,4)*0.09).toFixed(2)+"s");e.classList.add("rv")});
+  r.classList.add("js");
+  els.forEach(function(e){io.observe(e)});
+ }catch(err){r.classList.remove("js")}
 })();
 </script>
 </body>
