@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>শিক্ষক পোর্টাল | ফালাহ কোচিং সেন্টার</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;font-family:"Hind Siliguri",system-ui,sans-serif;color:#E8EEF5;background:radial-gradient(800px 500px at 85% -10%,rgba(63,211,166,.22),transparent 60%),radial-gradient(700px 480px at -10% 10%,rgba(210,174,98,.14),transparent 55%),#0C1626}
+.c{width:min(100%,440px);text-align:center;padding:34px 26px;border:1px solid rgba(255,255,255,.14);border-radius:24px;background:rgba(255,255,255,.06);backdrop-filter:blur(10px);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.k{width:64px;height:64px;margin:0 auto 14px;border-radius:20px;display:grid;place-items:center;background:linear-gradient(135deg,#0A7F5E,#3FD3A6);box-shadow:0 12px 26px -10px #3FD3A6}.k svg{width:34px;height:34px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+h1{margin:0;font:700 1.7rem "Noto Serif Bengali","Hind Siliguri",serif;color:#D2AE62}p{color:#9FB0C3;margin:10px 0 0}
+.b{display:block;margin-top:24px;padding:14px;border-radius:14px;background:linear-gradient(135deg,#3be0ac,#19c28f);color:#06251c;font-weight:700;font-size:1.05rem;text-decoration:none;box-shadow:0 10px 24px -10px rgba(25,194,143,.7);transition:transform .15s}.b:hover{transform:translateY(-2px)}
+.b[aria-disabled="true"]{opacity:.5;pointer-events:none}.back{display:inline-block;margin-top:18px;color:#9FB0C3;font-size:.92rem;text-decoration:none}.note{font-size:.85rem;margin-top:14px;color:#9FB0C3}
+</style></head><body>
+<main class="c">
+ <div class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+ <h1>শিক্ষক পোর্টাল</h1>
+ <p>ফালাহ কোচিং সেন্টার</p>
+ <p>এটা শুধু শিক্ষকের জন্য। আপনার Google অ্যাকাউন্টে লগইন করে পরীক্ষার ফলাফল ব্যবস্থাপনায় যান।</p>
+ <a class="b" id="go" href="#" aria-disabled="true" rel="noopener">পোর্টালে প্রবেশ করুন</a>
+ <p class="note" id="nt"></p>
+ <a class="back" href="index.html">← ওয়েবসাইটে ফিরুন</a>
+</main>
+<script>
+/* এখানে আপনার পোর্টালের Web app URL বসান (Deploy করার পর পাওয়া লিংক) */
+var PORTAL_URL="https://script.google.com/macros/s/AKfycbzqbOCDBqQxEMNrEG8MytbA9ld6Q1mcq5BElr2qCOeDNvjQ3XLZlwGBeC-kQCJqA1QiMg/exec";
+var g=document.getElementById("go");
+if(/^https:\/\/script\.google\.com\//.test(PORTAL_URL)){g.href=PORTAL_URL;g.removeAttribute("aria-disabled")}
+else document.getElementById("nt").textContent="পোর্টালের লিংক এখনো বসানো হয়নি।";
+</script></body></html>
